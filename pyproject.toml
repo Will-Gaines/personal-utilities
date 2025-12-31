@@ -1,0 +1,28 @@
+[project]
+name = "personal-utilities"
+version = "0.1.0"
+description = "A small CLI package for automating common tasks and utilities in one place"
+authors = [
+    {name = "will-gaines"}
+]
+license = {text = "Apache 2.0"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "click (>=8.3.1,<9.0.0)"
+]
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.14.10,<0.15.0)",
+    "pytest (>=9.0.2,<10.0.0)"
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

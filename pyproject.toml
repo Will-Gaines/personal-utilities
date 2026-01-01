@@ -23,6 +23,12 @@ dev = [
 pythonpath = [
   "."
 ]
+addopts = "--cov=src --cov-report=term-missing"
+
+[tool.coverage.run]
+omit = [
+    "src/**/__init__.py"
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

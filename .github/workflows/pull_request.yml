@@ -43,7 +43,7 @@ jobs:
 
       - name: Install dependencies with poetry
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-root
+        run: poetry install --no-root --with dev
 
       - name: Run test suite and report coverage
         # For now we won't have a CI requirement for coverage, but should aim for 100%, 95% as minimum

@@ -5,7 +5,17 @@ import typing as t
 from src.password_generator import password_generator as pg
 
 
-@click.command(name="generate-password")
+@click.group(context_settings={"help_option_names": ["-h", "--help"]})
+def cli():
+    """
+    Set the main app entrypoint that will be defined in pyproject.toml
+    All other CLI commands will be attached to this group
+    :return:
+    """
+    pass  # pragma: no cover
+
+
+@cli.command(name="generate-password")
 @click.option(
     "--dictionary-path",
     default=None,

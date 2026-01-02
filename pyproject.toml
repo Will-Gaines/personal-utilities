@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-personal-utilities = "cli"
+personal-utilities = "cli:cli"
 
 [dependency-groups]
 dev = [

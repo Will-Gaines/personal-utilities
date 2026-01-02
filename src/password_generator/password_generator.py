@@ -125,7 +125,7 @@ class PasswordGenerator:
     @classmethod
     def generate_password(
         cls,
-        dictionary_file_path: t.Optional[pl.Path],
+        dictionary_file_path: t.Optional[pl.Path] = None,
         min_word_length: int = 4,
         max_word_length: int = 8,
         min_password_length: int = 10,

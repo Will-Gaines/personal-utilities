@@ -15,6 +15,11 @@ def cli():
     pass  # pragma: no cover
 
 
+@cli.command(name="test")
+def test():
+    click.echo("Cli installation successful!")
+
+
 @cli.command(name="generate-password")
 @click.option(
     "--dictionary-path",

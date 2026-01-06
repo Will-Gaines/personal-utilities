@@ -1,0 +1,50 @@
+name: Release Version
+
+env:
+  PYTHON_VERSION: 3.11
+
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  release:
+    name: Release new version
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Set up python with relevant version
+        uses: actions/setup-python@v5
+        with:
+          python_version: ${{ env.PYTHON_VERSION }}
+          cache: 'poetry'
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 2.2.1
+
+      - name: Run Semantic Release
+        id: release
+        uses: cycjimmy/semantic-release-action@v3
+        # TODO: Need to create a token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/exec
+            @semantic/release/git

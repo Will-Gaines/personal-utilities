@@ -46,6 +46,7 @@ jobs:
 
       - name: Cache poetry environment if cache was missed
         uses: actions/cache/save@v3
+        if: steps.cached-poetry-dependencies.output.cache-hit != 'true'
         id: cache_poetry_environment
         with:
           path: .venv

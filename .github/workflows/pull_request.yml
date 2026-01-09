@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'poetry'
 
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
@@ -36,14 +35,21 @@ jobs:
 
       - name: Load cached venv (if cache hit)
         id: cached-poetry-dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ hashFiles('poetry.lock') }}
 
       - name: Install dependencies with poetry
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-root --with dev
+
+      - name: Cache poetry environment if cache was missed
+        uses: actions/cache/save@v3
+        id: cache_poetry_environment
+        with:
+          path: .venv
+          key: venv-${{ hashFiles('poetry.lock') }}
 
       - name: Run test suite and report coverage
         # For now we won't have a CI requirement for coverage, but should aim for 100%, 95% as minimum

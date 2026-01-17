@@ -74,7 +74,7 @@ end
 def lint_commit(commit)
     # This ignores merge commits as that is a separate point to enforcing good commit standards
     # Revert commits are also ignored
-    if commit.message.starts_with?(*IGNORED_COMMIT_MESSAGES)
+    if commit.message.start_with?(*IGNORED_COMMIT_MESSAGES)
         return { failed: false, release: NO_RELEASE}
     end
 

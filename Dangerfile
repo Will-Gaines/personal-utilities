@@ -147,7 +147,7 @@ def lint_commits(commits)
     type, bump = get_release_info(max_release[:release])
 
     if type && bump
-    add_release_type_markdown(type)
+    add_release_markdown(type)
     markdown(<<~MARKDOWN)
       This Pull Request will trigger a _#{type}_ changes, triggered by commit:
       #{max_release[:commit].sha}
@@ -184,7 +184,7 @@ def lint_pr(pr)
         type, bump = get_release_info(release)
 
         if type && bump
-            add_release_type_markdown(type)
+            add_release_markdown(type)
             markdown(<<~MARKDOWN)
             This Pull Request will trigger a _#{type}_ changes based on its title.
 

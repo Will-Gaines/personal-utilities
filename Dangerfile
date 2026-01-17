@@ -7,5 +7,5 @@ IGNORED_COMMIT_MESSAGES = [
     'Revert ""'
 ].freeze
 
-DANGER_GITHUB_HOST=github.com
-DANGER_GITHUB_API_BASE_URL=https://github.com/api/v3
+DANGER_GITHUB_HOST='github.com'
+DANGER_GITHUB_API_BASE_URL='https://github.com/api/v3'

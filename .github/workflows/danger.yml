@@ -25,8 +25,7 @@ jobs:
         with:
           ruby-version: "3.0"
           bundler-cache: true
-      # TODO: Fix this (env doesn't seem to be set up with above) and generate github tokens
       - name: Run Danger
         run: bundle exec danger
         env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}

@@ -6,3 +6,6 @@ IGNORED_COMMIT_MESSAGES = [
     'Merge pull request',
     'Revert ""'
 ].freeze
+
+DANGER_GITHUB_HOST=github.com
+DANGER_GITHUB_API_BASE_URL=https://github.com/api/v3

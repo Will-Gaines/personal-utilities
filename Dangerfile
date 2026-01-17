@@ -142,7 +142,7 @@ def lint_commits(commits)
     MARKDOWN
     end
 
-    eturn if github.pr_json['squash']
+    return if github.pr_json['squash']
 
     type, bump = get_release_info(max_release[:release])
 

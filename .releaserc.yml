@@ -1,0 +1,16 @@
+branches:
+  - main
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - - "@semantic-release/exec"
+    - prepareCmd: |
+        poetry version ${nextRelease.version}
+  - "@semantic-release/github"
+  - - "semantic-release/changelog"
+    - assets:
+        CHANGELOG.md
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+        - pyproject.toml
